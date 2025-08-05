@@ -77,7 +77,6 @@
 \fancyhead[R]{\leftmark}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
-
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markboth{\thesection\quad#1}{}}
 \renewcommand{\subsectionmark}[1]{}
@@ -88,7 +87,16 @@
   \renewcommand{\headrulewidth}{0pt}
 }
 
+\RequirePackage{float}
+\floatstyle{plain}
+\newfloat{image}{htbp}{loi}
+\floatname{image}{\imagename}
 
+\newcommand{\listofmyimages}{%
+  \@starttoc{loi}%
+}
+
+\newcommand*\l@image{\@dottedtocline{1}{1.5em}{2.3em}}
 
 % ========== ALGORITHMS ==========
 % Algorithm counter
@@ -103,11 +111,9 @@
 \newenvironment{myalgorithm}[2]{% #1 = title, #2 = label
     \refstepcounter{myalgorithm}%
     \addcontentsline{loa}{myalgorithm}{\protect\numberline{\themyalgorithm}{\ignorespaces #1}}%
-    % \addcontentsline{loa}{myalgorithm}{\protect\numberline{\themyalgorithm}{\texorpdfstring{#1}{#1}}}%
     \vspace{\baselineskip}%
     \hrule
     \vspace{0.2em}
-    % \noindent{\textbf{\algorithmname}~\themyalgorithm~-- #1}%
     \noindent{\textbf{\algorithmname~\themyalgorithm} -- #1}%
     \vspace{0.2em}%
     \hrule
@@ -121,7 +127,7 @@
 
 % List of Algorithms output
 \newcommand{\listofmyalgorithms}{%
-  \section*{\listalgorithmname}%
+  % \chapter*{\listalgorithmname}%
   \@starttoc{loa}%
 }
 
@@ -129,6 +135,33 @@
 \newcommand*\l@myalgorithm{\@dottedtocline{1}{1.5em}{2.3em}}
 \makeatother
 
+
+% ============== LISTS =============
+\newcommand{\listofalgorithms}{%
+  \cleardoublepage
+  \chapter*{\listalgorithmname}%
+  % \addcontentsline{toc}{chapter}{\listalgorithmname}
+  \listofmyalgorithms
+}
+
+
+\newcommand{\listofimages}{%
+  \cleardoublepage
+  \chapter*{\listimagename}%
+  \listofmyimages
+}
+
+
+\newcommand{\listofacronyms}{%
+  \cleardoublepage
+  % \addcontentsline{toc}{chapter}{\acronymname}%
+  \chapter*{\acronymname}
+  \glsaddall%
+  \begingroup
+    \def\glossarysection[##1]##2{}%
+    \printglossary[type=\acronymtype, title={}]%
+  \endgroup
+}
 
 % =========================== Graphics ========================
 \RequirePackage{graphicx, float, tikz, forest}
