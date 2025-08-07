@@ -103,6 +103,16 @@
 
 \newcommand*\l@image{\@dottedtocline{1}{1.5em}{2.3em}}
 
+% Section-based numbering for floats
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\theimage}{\thechapter.\arabic{image}}
+
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{image}{section}
+
+
 % ========== ALGORITHMS ==========
 % Algorithm counter
 \newcounter{myalgorithm}[chapter]
@@ -168,7 +178,7 @@
   \endgroup
 }
 
-
+% ========== BIBLIOGRAPHY ==========
 \newcommand{\custombibliography}{%
     \begingroup
         \let\origclearpage\clearpage
@@ -191,34 +201,16 @@
     \markboth{\bibname}{}
 }
 
-% =========================== Graphics ========================
-\RequirePackage{graphicx, float, tikz, forest}
-\usetikzlibrary{trees, fit, positioning, backgrounds, arrows.meta, decorations.markings}
 
 
-% ============================== Hyperlinks ===========================
-\RequirePackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=black,
-  urlcolor=black,
-  citecolor=black,
-  pdfborder={0 0 0}
-}
-
-% ============================= Captions ==========================
-\RequirePackage[font=small,labelfont=bf]{caption}
-
-% ========================== Theorems =========================
-\RequirePackage{amsthm}
-
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{example}{Example}[chapter]
-\newtheorem{remark}{Observation}[chapter]
+% ========== THEOREMS ==========
+\newtheorem{theorem}{\theoremname}[chapter]
+\newtheorem{lemma}[theorem]{\lemmaname}
+\newtheorem{definition}[theorem]{\definitionname}
+\newtheorem{corollary}[theorem]{\corollaryname}
+\newtheorem{proposition}[theorem]{\propositionname}
+\newtheorem{example}{\examplename}[chapter]
+\newtheorem{remark}{\remarkname}[chapter]
 
 
 % ========== HYPERREF ==========
