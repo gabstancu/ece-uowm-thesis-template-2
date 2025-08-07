@@ -6,11 +6,11 @@
 \include{covers/cover1/gr}
 \include{covers/cover1/en}
 
-\include{covers/cover2/gr}
-\include{covers/cover2/en}
+% \include{covers/cover2/gr}
+% \include{covers/cover2/en}
 
-\include{covers/cover3/en}
-\include{covers/cover3/gr}
+% \include{covers/cover3/en}
+% \include{covers/cover3/gr}
 
 \include{copyright-gr}
 \include{copyright-en}
@@ -28,9 +28,13 @@
 
 
 \listoftables
+\newpage
 \listoffigures
-\listofalgorithms
+\newpage
+\listofmyalgorithms
+\newpage
 \listofimages
+\newpage
 
 \tableofcontents
 
@@ -45,15 +49,14 @@
 
 \chapter{Τίτλος κεφαλαίου}
 \input{doc/chapter2/part1}
-% \input{doc/chapter2/part2}
+\input{doc/chapter2/part2}
 
 
 \appendix
-\chapter{Τίτλος παραρτήματος}
+\chapter{Κώδικας}
+\input{doc/appendices/code}
 
-
-\bibliographystyle{ieeetran}
-\bibliography{references}
+\custombibliography
 
 \end{document}
 

@@ -1,14 +1,17 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mytemplate}[2025/08/05 Custom Thesis Template Class]
+\ProvidesClass{mythesis}[2023/11/15 Custom Thesis Class]
 
-% ========== BASE CLASS ==========
+% ========== CLASS OPTIONS ==========
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 \LoadClass[12pt,a4paper]{report}
 
-% ===================== Language and Encoding ==================
+% ========== REQUIRED PACKAGES ==========
+\RequirePackage{settings}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[english,greek]{babel}
+\RequirePackage[T1]{fontenc}
+
 
 % ========== LANGUAGE SETTINGS ==========
 \AtBeginDocument{%
@@ -70,13 +73,15 @@
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 \RequirePackage{chngcntr}
-
 \RequirePackage{fancyhdr}
+
+
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[R]{\leftmark}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markboth{\thesection\quad#1}{}}
 \renewcommand{\subsectionmark}[1]{}
@@ -127,7 +132,7 @@
 
 % List of Algorithms output
 \newcommand{\listofmyalgorithms}{%
-  % \chapter*{\listalgorithmname}%
+  \chapter*{\listalgorithmname}%
   \@starttoc{loa}%
 }
 
@@ -141,7 +146,7 @@
   \cleardoublepage
   \chapter*{\listalgorithmname}%
   % \addcontentsline{toc}{chapter}{\listalgorithmname}
-  \listofmyalgorithms
+  \listofmyalgorithms\
 }
 
 
@@ -161,6 +166,29 @@
     \def\glossarysection[##1]##2{}%
     \printglossary[type=\acronymtype, title={}]%
   \endgroup
+}
+
+
+\newcommand{\custombibliography}{%
+    \begingroup
+        \let\origclearpage\clearpage
+        \let\clearpage\relax
+        \let\cleardoublepage\relax
+        \phantomsection
+        
+        \addcontentsline{toc}{chapter}{\bibname}
+        \newpage
+        
+        \chapter*{\bibname}
+        \vspace{-2.75cm}
+        \renewcommand{\bibname}{}
+        \bibliographystyle{IEEEtran}
+        \begin{otherlanguage*}{english}
+            \bibliography{IEEEabrv,references}
+        \end{otherlanguage*}
+        \let\clearpage\origclearpage
+    \endgroup
+    \markboth{\bibname}{}
 }
 
 % =========================== Graphics ========================
@@ -193,5 +221,13 @@
 \newtheorem{remark}{Observation}[chapter]
 
 
+% ========== HYPERREF ==========
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    pdfborder={0 0 0}
+}
 
 \endinput
