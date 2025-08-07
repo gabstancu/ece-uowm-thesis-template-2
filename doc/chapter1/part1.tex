@@ -5,7 +5,6 @@
 
 \begin{myalgorithm}{Όνομα αλγορίθμου - \en{Algorithm name}}{alg:conflict-res}
 \begin{algorithmic}[1]
-\en{
     \Require Implication graph and a conflict at the current decision level
     \Ensure Learned clause and backjump level
     \Function{analyze\_conflict}{}
@@ -23,6 +22,5 @@
         \State $back\_dl \gets$ clause\_asserting\_level($cl$)
         \State \Return $back\_dl$
     \EndFunction
-}
     \end{algorithmic}
 \end{myalgorithm}

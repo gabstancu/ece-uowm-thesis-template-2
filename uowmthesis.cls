@@ -8,10 +8,15 @@
 
 % ========== REQUIRED PACKAGES ==========
 \RequirePackage{settings}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[english,greek]{babel}
-\RequirePackage[T1]{fontenc}
+\RequirePackage{polyglossia}
 
+\setmainlanguage{greek} % define main document language
+\setotherlanguage{english}
+
+\RequirePackage[no-math]{fontspec}
+\RequirePackage{xunicode,xltxtra}
+
+\RequirePackage{algorithm}
 
 % ========== LANGUAGE SETTINGS ==========
 \AtBeginDocument{%
@@ -62,6 +67,7 @@
 \setlength{\parindent}{0pt}
 \RequirePackage{setspace}
 \RequirePackage{fancyhdr}
+\let\eth\relax
 \RequirePackage{amsmath, amssymb, amsthm, mathtools}
 \RequirePackage{algpseudocode}
 \RequirePackage{titlesec}
@@ -156,7 +162,7 @@
   \cleardoublepage
   \chapter*{\listalgorithmname}%
   % \addcontentsline{toc}{chapter}{\listalgorithmname}
-  \listofmyalgorithms\
+  \listofmyalgorithms
 }
 
 
