@@ -1,5 +1,6 @@
 \documentclass{uowmthesis}
-% \usepackage[greek,english]{babel}
+\setmainlanguage{greek} % set main language
+\setotherlanguage{english}
 \addbibresource{references.bib}
 
 \begin{document}
@@ -25,8 +26,8 @@
 
 \selectlanguage{greek} % define main language again
 
-\listoftables \newpage
-\listoffigures \newpage
+\listoftables
+\listoffigures
 \listofalgorithms
 \listofimages
 
@@ -43,7 +44,7 @@
 
 
 \appendix
-\chapter{Ακρωνύμια}
+\chapter{\acronymname}
 \input{doc/acronyms}
 
 \chapter{Κώδικας}
