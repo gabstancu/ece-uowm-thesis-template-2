@@ -1,5 +1,6 @@
 \documentclass{uowmthesis}
-\usepackage{settings}
+% \usepackage[greek,english]{babel}
+\addbibresource{references.bib}
 
 \begin{document}
 
@@ -20,17 +21,14 @@
 
 \include{abstract-gr}
 \include{abstract-en}
-
 \include{acknowledgements}
 
-\listoftables
-\newpage
-\listoffigures
-\newpage
-\listofmyalgorithms
-\newpage
+\selectlanguage{greek} % define main language again
+
+\listoftables \newpage
+\listoffigures \newpage
+\listofalgorithms
 \listofimages
-\newpage
 
 \tableofcontents
 
@@ -45,13 +43,18 @@
 
 
 \appendix
+\chapter{Ακρωνύμια}
+\input{doc/acronyms}
+
 \chapter{Κώδικας}
 \input{doc/appendices/code}
 
-\input{doc/acronyms}
-\listofacronyms
 
-\custombibliography
+% =========== bibliography ===========
+\chapter*{\bibname}
+\selectlanguage{english}
+\printbibliography[heading=none]
+
 
 \end{document}
 
